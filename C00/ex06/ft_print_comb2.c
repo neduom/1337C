@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-moud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 11:57:06 by mel-moud          #+#    #+#             */
-/*   Updated: 2024/07/13 15:56:44 by mel-moud         ###   ########.fr       */
+/*   Created: 2024/07/13 10:09:18 by mel-moud          #+#    #+#             */
+/*   Updated: 2024/07/13 10:25:21 by mel-moud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	int	i;
+#include <stdio.h>
+#include <unistd.h>
 
-	i = 2;
-	if (nb < 2)
-		return (0);
-	else if (nb == 2)
-		return (1);
-	while (i < nb)
-	{
-		if (nb % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
 
-int	ft_find_next_prime(int nb)
+void	ft_print_comb2(void)
 {
-	int	i;
+	int	a;
+	int	b;
 
-	i = 0;
-	while (1)
+	a = 0;
+	while (a <= 98)
 	{
-		if (ft_is_prime(nb + i) == 1)
-			return (nb + i);
-		i++;
+		b = a + 1;
+		while (b <= 99)
+		{
+			ft_putchar('0' + a / 10);
+			ft_putchar('0' + a % 10);
+			ft_putchar(' ');
+			ft_putchar('0' + b / 10);
+			ft_putchar('0' + b % 10);
+			if (a != 98)
+			{
+				ft_putchar(',');
+				ft_putchar(' ');
+			}
+			b++;
+		}
+		a++;
 	}
 }
